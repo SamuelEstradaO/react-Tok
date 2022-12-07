@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route, Link, Outlet,  useParams, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, Outlet, useParams, useNavigate } from "react-router-dom";
 import { Provider, useDispatch, useSelector } from "react-redux";
-import { store } from "./store";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor, store } from "./store";
 import SignIn from "./users/SignIn";
 import { logOut } from "./store/user";
 
@@ -31,9 +32,9 @@ let UsuariosOutlet = () => {
   let user = useSelector(state => state.user.user);
   let dispatch = useDispatch();
   let navigate = useNavigate();
-  let doLogOut = ()=> {
+  let doLogOut = () => {
     dispatch(
-    logOut()
+      logOut()
     )
     navigate('/usuarios/login')
   }
@@ -50,23 +51,26 @@ function App() {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <Routes>
-          <Route path="/" element={<NotImplemented />} />
-          <Route path="/usuarios" element={<UsuariosOutlet />}>
-            <Route path="" element={<NotImplemented />} />
-            <Route path="login" element={<SignIn />} />
-            <Route path="registro" element={<NotImplemented />} />
-            <Route path=":id" element={<NotImplemented />} />
-            <Route path=":id/videos" element={<NotImplemented />} />
-          </Route>
-          <Route path="/videos">
-            <Route path="" element={<NotImplemented />} />
-            <Route path="nuevo" element={<NotImplemented />} />
-            <Route path=":id" element={<VideoShow />} />
-          </Route>
-          <Route path="*" element={<Error404 />} />
+        <PersistGate loading={null} persistor={persistor}>
+          <Routes>
+            <Route path="/" element={<NotImplemented />} />
+            <Route path="/usuarios" element={<UsuariosOutlet />}>
+              <Route path="" element={<NotImplemented />} />
+              <Route path="login" element={<SignIn />} />
+              <Route path="registro" element={<NotImplemented />} />
+              <Route path=":id" element={<NotImplemented />} />
+              <Route path=":id/videos" element={<NotImplemented />} />
+            </Route>
+            <Route path="/videos">
+              <Route path="" element={<NotImplemented />} />
+              <Route path="nuevo" element={<NotImplemented />} />
+              <Route path=":id" element={<VideoShow />} />
+            </Route>
+            <Route path="*" element={<Error404 />} />
 
-        </Routes>
+          </Routes>
+        </PersistGate>
+
       </Provider>
 
     </BrowserRouter>

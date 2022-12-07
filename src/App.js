@@ -1,6 +1,9 @@
-import { BrowserRouter, Routes, Route, Link, Outlet, useNavigate, Navigate, useParams } from "react-router-dom";
-import { Provider } from "react-redux";
+import { BrowserRouter, Routes, Route, Link, Outlet,  useParams, useNavigate } from "react-router-dom";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import { store } from "./store";
+import SignIn from "./users/SignIn";
+import { logOut } from "./store/user";
+
 let NotImplemented = () => {
   return (<>
     <Link to='/videos'>Ir a videos</Link>
@@ -25,29 +28,33 @@ let VideoShow = () => {
 }
 
 let UsuariosOutlet = () => {
+  let user = useSelector(state => state.user.user);
+  let dispatch = useDispatch();
   let navigate = useNavigate();
-  let redirect = () => {
-    navigate('/')
+  let doLogOut = ()=> {
+    dispatch(
+    logOut()
+    )
+    navigate('/usuarios/login')
   }
+
   return (
     <>
-      <button onClick={redirect}>Ir al home</button>
+      {user && <button onClick={doLogOut}>Cerrar sesión</button>}
       <Outlet />
     </>
   )
 }
-let HolaIndex = () => (<p>Hola</p>);
-let HolaVideos = () => (<p>Hola videos</p>)
+
 function App() {
-  const isAuth = false;
   return (
     <BrowserRouter>
       <Provider store={store}>
         <Routes>
           <Route path="/" element={<NotImplemented />} />
-          <Route path="/usuarios" element={isAuth ? <Navigate to='/' /> : <UsuariosOutlet />}>
+          <Route path="/usuarios" element={<UsuariosOutlet />}>
             <Route path="" element={<NotImplemented />} />
-            <Route path="login" element={<NotImplemented />} />
+            <Route path="login" element={<SignIn />} />
             <Route path="registro" element={<NotImplemented />} />
             <Route path=":id" element={<NotImplemented />} />
             <Route path=":id/videos" element={<NotImplemented />} />

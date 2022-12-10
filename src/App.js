@@ -4,6 +4,8 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./store";
 import SignIn from "./users/SignIn";
 import { logOut } from "./store/user";
+import Videos from "./videos/Videos";
+import VideosForm from "./videos/VideosForm";
 
 let NotImplemented = () => {
   return (<>
@@ -17,15 +19,6 @@ let Error404 = () => {
     <Link to='/'>Regresar a inicio</Link>
     <h1>Esta página no existe - 404</h1>
   </>)
-}
-
-let VideoShow = () => {
-  let { id } = useParams();
-  return (
-    <>
-      <p>{id}</p>
-    </>
-  )
 }
 
 let UsuariosOutlet = () => {
@@ -62,9 +55,9 @@ function App() {
               <Route path=":id/videos" element={<NotImplemented />} />
             </Route>
             <Route path="/videos">
-              <Route path="" element={<NotImplemented />} />
-              <Route path="nuevo" element={<NotImplemented />} />
-              <Route path=":id" element={<VideoShow />} />
+              <Route path="" element={<Videos />} />
+              <Route path="nuevo" element={<VideosForm />} />
+              <Route path=":id" element={<NotImplemented />} />
             </Route>
             <Route path="*" element={<Error404 />} />
 

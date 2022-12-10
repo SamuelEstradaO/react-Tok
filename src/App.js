@@ -6,6 +6,7 @@ import SignIn from "./users/SignIn";
 import { logOut } from "./store/user";
 import Videos from "./videos/Videos";
 import VideosForm from "./videos/VideosForm";
+import VideoShow from "./videos/VideoShow";
 
 let NotImplemented = () => {
   return (<>
@@ -57,7 +58,7 @@ function App() {
             <Route path="/videos">
               <Route path="" element={<Videos />} />
               <Route path="nuevo" element={<VideosForm />} />
-              <Route path=":id" element={<NotImplemented />} />
+              <Route path=":id" element={<VideoShow />} />
             </Route>
             <Route path="*" element={<Error404 />} />
 

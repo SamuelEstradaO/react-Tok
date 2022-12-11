@@ -7,6 +7,8 @@ import { logOut } from "./store/user";
 import Videos from "./videos/Videos";
 import VideosForm from "./videos/VideosForm";
 import VideoShow from "./videos/VideoShow";
+import Profile from "./users/Profile";
+import HomePage from "./Home";
 
 let NotImplemented = () => {
   return (<>
@@ -47,12 +49,12 @@ function App() {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Routes>
-            <Route path="/" element={<NotImplemented />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/usuarios" element={<UsuariosOutlet />}>
               <Route path="" element={<NotImplemented />} />
               <Route path="login" element={<SignIn />} />
               <Route path="registro" element={<NotImplemented />} />
-              <Route path=":id" element={<NotImplemented />} />
+              <Route path="miperfil" element={<Profile />} />
               <Route path=":id/videos" element={<NotImplemented />} />
             </Route>
             <Route path="/videos">

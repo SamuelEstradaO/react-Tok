@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
+
+let linkStyle = css`
+    font-size: 0.8em;
+`;
 
 let Example = styled.div`
     height: 200px;
     transition: all 0.2s;
     padding: 50px;
-    
+    background-color: ${({theme})=> theme.colors.dark};
     & a{
         color: purple;
     }
@@ -25,6 +29,7 @@ let Button = styled.button`
     font-size: 1em;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.6);
     border-radius: 2px;
+    ${linkStyle}
 `;
 
 let PrimaryButton = styled(Button)`
@@ -52,8 +57,9 @@ let AppInput = styled.input.attrs((props)=> {
 let HomePage = (props) => {
     return (
         <Example >
-            <a>Hola</a>
-            <AppInput></AppInput>
+            <PrimaryButton>Enviar</PrimaryButton>
+            <Button>Cancelar</Button>
+            <AppInput/>
         </Example>
     )
 }

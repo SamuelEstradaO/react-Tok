@@ -7,6 +7,9 @@ let Example = styled.div`
     transition: all 0.2s;
     padding: 50px;
     
+    & a{
+        color: purple;
+    }
 `;
 let Button = styled.button`
     border: solid 1px red;
@@ -28,16 +31,19 @@ let AppLink = styled(Link)`
     text-transform: uppercase;
 `;
 
-let AppInput = styled.input`
+let AppInput = styled.input.attrs((props)=> {
+    return {
+        type: props.type? props.type : 'text'
+    }
+})`
     border: solid 1px red;
 `
 
 let HomePage = (props) => {
     return (
         <Example>
-            <Button>Hola mundo</Button>
-            <PrimaryButton>Boton primario</PrimaryButton>
-            <AppLink to='/videos'>Ir a videos</AppLink>
+            <AppInput type='email' placeholder="Escribe tu nombre" required></AppInput>
+            <AppLink to='/videos'/>
         </Example>
     )
 }

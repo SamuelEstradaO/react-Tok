@@ -10,7 +10,7 @@ import VideoShow from "./videos/VideoShow";
 import Profile from "./users/Profile";
 import HomePage from "./Home";
 import { ThemeProvider } from "styled-components";
-import theme from "./theme";
+import theme, { Layout } from "./theme";
 
 let NotImplemented = () => {
   return (<>
@@ -51,23 +51,26 @@ function App() {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider theme={theme}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/usuarios" element={<UsuariosOutlet />}>
-                <Route path="" element={<NotImplemented />} />
-                <Route path="login" element={<SignIn />} />
-                <Route path="registro" element={<NotImplemented />} />
-                <Route path="miperfil" element={<Profile />} />
-                <Route path=":id/videos" element={<NotImplemented />} />
-              </Route>
-              <Route path="/videos">
-                <Route path="" element={<Videos />} />
-                <Route path="nuevo" element={<VideosForm />} />
-                <Route path=":id" element={<VideoShow />} />
-              </Route>
-              <Route path="*" element={<Error404 />} />
+            <Layout>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/usuarios" element={<UsuariosOutlet />}>
+                  <Route path="" element={<NotImplemented />} />
+                  <Route path="login" element={<SignIn />} />
+                  <Route path="registro" element={<NotImplemented />} />
+                  <Route path="miperfil" element={<Profile />} />
+                  <Route path=":id/videos" element={<NotImplemented />} />
+                </Route>
+                <Route path="/videos">
+                  <Route path="" element={<Videos />} />
+                  <Route path="nuevo" element={<VideosForm />} />
+                  <Route path=":id" element={<VideoShow />} />
+                </Route>
+                <Route path="*" element={<Error404 />} />
 
-            </Routes>
+              </Routes>
+            </Layout>
+
           </ThemeProvider>
 
         </PersistGate>

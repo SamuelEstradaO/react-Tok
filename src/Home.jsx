@@ -10,6 +10,13 @@ let Example = styled.div`
     & a{
         color: purple;
     }
+
+    &.important{
+        background-color: yellow;
+    }
+    & > div {//nietos directos
+
+    }
 `;
 let Button = styled.button`
     border: solid 1px red;
@@ -37,13 +44,16 @@ let AppInput = styled.input.attrs((props)=> {
     }
 })`
     border: solid 1px red;
+    .important &{//condicionar a que el padre tenga una clase
+        background-color: pink;
+    }
 `
 
 let HomePage = (props) => {
     return (
-        <Example>
-            <AppInput type='email' placeholder="Escribe tu nombre" required></AppInput>
-            <AppLink to='/videos'/>
+        <Example >
+            <a>Hola</a>
+            <AppInput></AppInput>
         </Example>
     )
 }

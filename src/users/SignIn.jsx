@@ -1,7 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import AppInput from "../components/AppInput";
 import { signIn } from "../store/user";
+import { AppButton } from "../theme";
+import UserFormLayout from "./UserFormLayout";
 
 let SignIn = (props) => {
     let dispatch = useDispatch();
@@ -10,11 +13,13 @@ let SignIn = (props) => {
         dispatch(signIn({ credentials: data }))
     }
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <input type="email"  {...register('email')} placeholder="Correo electrónico" />
-            <input type="password" {...register('password')} placeholder="Contraseña" />
-            <input type="submit" value="Enviar" />
-        </form>
+        <UserFormLayout>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <AppInput type="email"  register={register('email')} label="Correo electrónico" />
+                <AppInput type="password" register={register('password')} label="Contraseña" />
+                <AppButton type="submit" small>Enviar</AppButton>
+            </form>
+        </UserFormLayout>
     )
 }
 

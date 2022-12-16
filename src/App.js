@@ -10,7 +10,9 @@ import VideoShow from "./videos/VideoShow";
 import Profile from "./users/Profile";
 import HomePage from "./Home";
 import { ThemeProvider } from "styled-components";
-import theme, { Layout } from "./theme";
+import theme, { GlobalStyler } from "./theme";
+import Layout from "./components/Layout";
+import UserFormLayout from "./users/UserFormLayout";
 
 let NotImplemented = () => {
   return (<>
@@ -51,13 +53,14 @@ function App() {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider theme={theme}>
+            <GlobalStyler/>
             <Layout>
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/usuarios" element={<UsuariosOutlet />}>
                   <Route path="" element={<NotImplemented />} />
                   <Route path="login" element={<SignIn />} />
-                  <Route path="registro" element={<NotImplemented />} />
+                  <Route path="registro" element={<UserFormLayout />} />
                   <Route path="miperfil" element={<Profile />} />
                   <Route path=":id/videos" element={<NotImplemented />} />
                 </Route>

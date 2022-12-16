@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { likeVideo } from "../store/likes";
 import { loadVideos } from "../store/videos";
 import { SmallContainer } from "../theme";
 import Video from "./Video";
@@ -13,17 +12,13 @@ let Videos = props => {
         )
     }, [])
 
-    let doLike = (videoId) => {
-        dispatch(
-            likeVideo(videoId)
-        )
-    }
+    
 
     return (
         <div>
             <SmallContainer>
                 {videosState.data.videos.map((video, index) => (
-                    <Video index={index} doLike={doLike} video={video}/>
+                    <Video index={index} video={video}/>
                 ))}
             </SmallContainer>
 

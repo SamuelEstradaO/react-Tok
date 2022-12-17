@@ -6,6 +6,7 @@ import { AppButton as AppButtonTemplate, SmallContainer } from "../theme";
 import styled from "styled-components";
 import VideoShow from "../videos/VideoShow";
 import VideoThumbnail from "../videos/Thumbnail";
+import LogOutButtonTemplate from "./LogOutButton";
 
 let ProfileHeader = styled.header`
     display: grid;
@@ -54,6 +55,12 @@ let AppButton = styled(AppButtonTemplate)`
     width: 100;
 `
 
+let LogOutButton = styled(LogOutButtonTemplate)`
+    grid-area: logOut;
+    display: block;
+    width: 100%;
+`
+
 let VideosContainer = styled.div`
     display: grid;
     grid-template-colums: repeat(3, minmax(auto,fr));
@@ -91,7 +98,7 @@ let Profile = (props) => {
                     <p className="description">likes</p>
                 </Counter>
                 <AppButton className="button">Editar</AppButton>
-                <AppButton className="button">Cerrar sesión</AppButton>
+                <LogOutButton />
             </ProfileHeader>
             <VideosContainer>
                 {

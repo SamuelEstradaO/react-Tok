@@ -2,10 +2,18 @@ import React from 'react';
 import { LayoutContainer } from '../theme';
 import Footer from './Footer';
 import Header from './Header';
+import { Route, Routes } from 'react-router-dom';
 
 let Layout = (props) => {
     return <LayoutContainer>
-        <nav><Header/></nav>
+        <nav>
+            <Routes>
+                <Route path='/videos' element={<nav></nav>}/>
+                <Route path='/usuarios/login' element={<nav></nav>}/>
+                <Route path='/usuarios/registro' element={<nav></nav>}/>
+                <Route path='*' element={<Header/>}/>
+            </Routes>
+        </nav>
         <main>
             {props.children}
         </main>

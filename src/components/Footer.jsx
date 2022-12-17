@@ -63,7 +63,7 @@ let SimpleFooterContainer = styled.footer`
 let LoggedInFooter = () => <FooterContainer>
     <Link to='/videos'>Home</Link>
     <FABButton to='/videos/nuevo'>+</FABButton>
-    <Link to='/user/profile'>Perfil</Link>
+    <Link to='/usuarios/miperfil'>Perfil</Link>
 </FooterContainer>;
 
 let LoggedOutFooter = () => <SimpleFooterContainer>

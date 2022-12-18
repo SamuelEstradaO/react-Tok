@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadVideosForUser } from "../store/videos";
-import Player from "../videos/player";
+import Player from "../videos/Player";
 import { AppButton as AppButtonTemplate, SmallContainer } from "../theme";
 import styled from "styled-components";
 import VideoShow from "../videos/VideoShow";

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import LikeButton from './LikeButton';
-import Player from './player'
+import Player from './Player'
 import ShareButton from './ShareButton';
 
 let VideoContainer = styled.div`
@@ -17,10 +17,10 @@ let VideoContainer = styled.div`
         z-index: 2;
         display: grid;
         grid-template-rows: minmax(0, 1fr) 100px;
-        grid-template-colums: minmax(0, 1fr) auto;
+        grid-template-columns: minmax(0, 1fr) auto;
         grid-template-areas: 'main sidebar'
                             ' info sidebar ';
-        alig-items: flex-start;
+        align-items: flex-start;
         transition: opacity 0.2s ease-in;
         width: 100%;
         height: 100%;

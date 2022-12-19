@@ -36,9 +36,9 @@ let VideoContainer = styled.div`
 
 `;
 
-let Video = ({ index, video}) => {
+let Video = ({video, style}) => {
     return (
-        <VideoContainer key={index}>
+        <VideoContainer style={style}>
             <div className='info'>
                 <aside className='sidebar'>
                     <LikeButton video={video}/>
